@@ -5,8 +5,8 @@ sequenceDiagram
 	
 	browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
 	activate server
-	Note left of server: test
-	server-->>browser: HTML document
+	Note left of server: Server repsonds with status code 302. This status code will provide an URL in the header filed location: /exampleapp/notes in our case
+	server-->>browser: Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
 	deactivate server
 	
 	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
