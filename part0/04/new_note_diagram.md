@@ -8,6 +8,11 @@ sequenceDiagram
 	Note left of server: Server repsonds with status code 302.<br/>This status code will provide an URL in the header field location: /exampleapp/notes in our case.<br/> Which asks the brwser to do a new GET request to the location.
 	server-->>browser: Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
 	deactivate server
+
+	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+	activate server
+	server-->>browser: HTML document
+	deactivate server
 	
 	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
 	activate server
