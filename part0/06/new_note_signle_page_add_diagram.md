@@ -2,33 +2,14 @@
 sequenceDiagram
 	participant browser
 	participant server
-	
-	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+
+	Note right of browser: Browser executes form submit which creates a new note and pushes it to the notes array <br/> then redraws the notes list on the page and sends the new note to the server
+
+	browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
 	activate server
-	server-->>browser: HTML document
-	deactivate server
-	
-	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-	activate server
-	server-->>browser: the css file
-	deactivate server
-	
-	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
-	activate server
-	server-->>browser: the JavaScript file
+	server-->>browser: Server responds with status code 201 indicates that the request was successful and a resource has been created (new note in this case)
 	deactivate server
 	
 	Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
-	
-	browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-	activate server
-	server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
-	deactivate server    
 
-	Note right of browser: The browser executes the callback function that renders the notes
-	
-	browser->>server: GET https://studies.cs.helsinki.fi/favicon.ico
-	activate server
-	server-->>browser: favicon.ico
-	deactivate server
 ```
