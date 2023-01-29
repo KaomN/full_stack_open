@@ -10,6 +10,4 @@ sequenceDiagram
 	server-->>browser: Server responds with status code 201 indicates that the request was successful and a resource has been created (new note in this case)
 	deactivate server
 	
-	Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
-
 ```
